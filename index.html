@@ -13,7 +13,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap');
         :root { --ycon-green: #00BF63; }
-        body { font-family: 'Open Sans', sans-serif; color: #1A1A1A; }
+        body { font-family: 'Open Sans', sans-serif; color: #1A1A1A; margin: 0; }
         .font-heading { font-family: 'Montserrat', sans-serif; }
         .btn-ycon {
             background-color: var(--ycon-green);
@@ -27,6 +27,7 @@
             cursor: pointer;
             border: none;
             display: inline-block;
+            text-decoration: none;
         }
         .btn-ycon:hover {
             background-color: #008f4a;
@@ -56,10 +57,15 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
     </style>
 </head>
 <body>
     <div id="root"></div>
+
     <script type="text/babel">
         const App = () => {
             const stats = [
@@ -68,15 +74,23 @@
                 { label: "HAPPY FAMILIES", value: "500+" },
                 { label: "CITIES", value: "3+" }
             ];
+            
             const whatsappNumber = "7568005371";
             const whatsappMessage = encodeURIComponent("Hello Ycon Infra, I'm interested in your projects.");
             
             return (
                 <div className="relative">
-                    <a href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`} className="whatsapp-float" target="_blank">
+                    {/* Floating WhatsApp Button */}
+                    <a 
+                        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`} 
+                        className="whatsapp-float" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
                         <i className="fab fa-whatsapp"></i>
                     </a>
 
+                    {/* Navigation */}
                     <nav className="bg-white pt-10 pb-12">
                         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center text-[11px] font-bold uppercase tracking-[0.3em] text-slate-800">
                             <div className="cursor-pointer hover:text-[#00BF63]">HOME</div>
@@ -84,28 +98,34 @@
                                 <div className="text-3xl font-heading font-extrabold tracking-tighter">YCON</div>
                                 <div className="text-[9px] -mt-1 font-bold tracking-[0.6em] text-slate-400">INFRA</div>
                             </div>
-                            {/* THIS IS THE UPDATED LINK */}
-                            <a href="projects.html" target="_blank" className="cursor-pointer hover:text-[#00BF63]">PROJECTS</a>
+                            <a href="projects.html" className="cursor-pointer hover:text-[#00BF63] no-underline">PROJECTS</a>
                         </div>
                     </nav>
 
+                    {/* Header/Hero Text */}
                     <header className="text-center pb-20">
                         <div className="max-w-5xl mx-auto px-6">
                             <h1 className="text-[#00BF63] font-heading text-5xl md:text-7xl font-extrabold uppercase mb-6 leading-[1.1] tracking-tighter">
-                                Transforming Spaces, <br/> Building Futures
+                                Pataudi's First Affordable Housing, <br/> Coming Soon
                             </h1>
                             <p className="text-slate-500 text-sm mb-10 tracking-widest font-semibold uppercase">
-                                Leading Real Estate Developer for Modern Homes.
+                                Pataudi's First Affordable Housing Society
                             </p>
-                            <a href="projects.html" target="_blank" className="btn-ycon">EXPLORE OUR PROJECTS</a>
+                            <a href="projects.html" className="btn-ycon">EXPLORE OUR PROJECTS</a>
                         </div>
                     </header>
 
+                    {/* Hero Image Section */}
                     <section className="relative h-[480px] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070" className="w-full h-full object-cover" alt="Modern Architecture" />
+                        <img 
+                            src="https://i.ibb.co/DgDGtSLq/Screenshot-2026-04-10-093549.png" 
+                            alt="Modern Architecture" 
+                            className="w-full h-full object-cover" 
+                        />
                         <div className="absolute bottom-0 w-full h-2.5 bg-[#00BF63]"></div>
                     </section>
 
+                    {/* Vision Section */}
                     <section className="py-28">
                         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                             <div>
@@ -116,14 +136,19 @@
                                 <p className="text-slate-500 mb-10 leading-relaxed text-[15px] font-medium max-w-md">
                                     At Ycon Infra, we aim to redefine the real estate landscape by creating sustainable and innovative living spaces.
                                 </p>
-                                <a href="projects.html" target="_blank" className="btn-ycon">VIEW OUR PROJECTS</a>
+                                <a href="projects.html" className="btn-ycon">VIEW OUR PROJECTS</a>
                             </div>
                             <div className="flex justify-center md:justify-end">
-                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000" className="w-[320px] h-[320px] object-cover rounded shadow-2xl" alt="Vision Building" />
+                                <img 
+                                    src="https://i.ibb.co/LdcsyJGp/Screenshot-2026-04-10-095338.png" 
+                                    className="w-[320px] h-[320px] object-cover rounded shadow-2xl" 
+                                    alt="Vision Building" 
+                                />
                             </div>
                         </div>
                     </section>
 
+                    {/* Stats Section */}
                     <section className="bg-slate-50 py-14 border-y border-slate-100">
                         <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-8 md:gap-0 text-center">
                             {stats.map((stat, i) => (
@@ -140,6 +165,7 @@
                 </div>
             );
         };
+
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
