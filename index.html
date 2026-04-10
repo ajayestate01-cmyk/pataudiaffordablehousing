@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ycon Infra - Transforming Spaces</title>
+    <title>pataudihousing</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -67,6 +67,55 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        const ContactForm = () => {
+            const [status, setStatus] = React.useState('');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                setStatus('Sending...');
+                const formData = new FormData(e.target);
+                
+                fetch('PASTE_YOUR_SCRIPT_URL_HERE', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    setStatus('Success! We will contact you soon.');
+                    e.target.reset();
+                })
+                .catch(() => setStatus('Submission failed. Please try again.'));
+            };
+
+            return (
+                <div className="bg-white p-8 shadow-xl rounded-xl border border-slate-100">
+                    <h3 className="text-2xl font-bold text-gray-800 font-heading mb-6 uppercase tracking-tight">Enquiry Form</h3>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <div>
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Full Name</label>
+                            <input name="Name" type="text" className="w-full border border-gray-200 p-3 rounded outline-none focus:border-[#00BF63] transition-all bg-slate-50" required />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Phone Number</label>
+                            <input name="Phone" type="tel" className="w-full border border-gray-200 p-3 rounded outline-none focus:border-[#00BF63] transition-all bg-slate-50" required />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Email Address</label>
+                            <input name="Email" type="email" className="w-full border border-gray-200 p-3 rounded outline-none focus:border-[#00BF63] transition-all bg-slate-50" required />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Message</label>
+                            <textarea name="Message" className="w-full border border-gray-200 p-3 rounded h-24 outline-none focus:border-[#00BF63] transition-all bg-slate-50" required placeholder="How can we help you?"></textarea>
+                        </div>
+                        <button type="submit" className="w-full bg-[#00BF63] text-white font-bold py-4 rounded hover:bg-[#008f4a] transition-all uppercase text-xs tracking-widest shadow-lg shadow-green-100">
+                            Submit Request
+                        </button>
+                        {status && <p className="text-center mt-4 text-sm font-bold text-[#00BF63]">{status}</p>}
+                    </form>
+                </div>
+            );
+        };
+
         const App = () => {
             const stats = [
                 { label: "YEARS EXPERIENCE", value: "5+" },
@@ -76,21 +125,15 @@
             ];
             
             const whatsappNumber = "7568005371";
-            const whatsappMessage = encodeURIComponent("Hello Ycon Infra, I'm interested in your projects.");
             
             return (
                 <div className="relative">
-                    {/* Floating WhatsApp Button */}
-                    <a 
-                        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`} 
-                        className="whatsapp-float" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                    >
+                    {/* Floating WhatsApp */}
+                    <a href={`https://wa.me/${whatsappNumber}`} className="whatsapp-float" target="_blank" rel="noopener noreferrer">
                         <i className="fab fa-whatsapp"></i>
                     </a>
 
-                    {/* Navigation */}
+                    {/* Nav */}
                     <nav className="bg-white pt-10 pb-12">
                         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center text-[11px] font-bold uppercase tracking-[0.3em] text-slate-800">
                             <div className="cursor-pointer hover:text-[#00BF63]">HOME</div>
@@ -102,53 +145,37 @@
                         </div>
                     </nav>
 
-                    {/* Header/Hero Text */}
+                    {/* Hero */}
                     <header className="text-center pb-20">
                         <div className="max-w-5xl mx-auto px-6">
                             <h1 className="text-[#00BF63] font-heading text-5xl md:text-7xl font-extrabold uppercase mb-6 leading-[1.1] tracking-tighter">
-                                Pataudi's First Affordable Housing, <br/> Coming Soon
+                                Pataudi's First Affordable Housing
                             </h1>
-                            <p className="text-slate-500 text-sm mb-10 tracking-widest font-semibold uppercase">
-                                Pataudi's First Affordable Housing Society
-                            </p>
-                            <a href="projects.html" className="btn-ycon">EXPLORE OUR PROJECTS</a>
+                            <p className="text-slate-500 text-sm mb-10 tracking-widest font-semibold uppercase">Premium Living at Unbeatable Prices</p>
+                            <a href="#enquiry" className="btn-ycon">ENQUIRE NOW</a>
                         </div>
                     </header>
 
-                    {/* Hero Image Section */}
-                    <section className="relative h-[480px] overflow-hidden">
-                        <img 
-                            src="https://i.ibb.co/DgDGtSLq/Screenshot-2026-04-10-093549.png" 
-                            alt="Modern Architecture" 
-                            className="w-full h-full object-cover" 
-                        />
-                        <div className="absolute bottom-0 w-full h-2.5 bg-[#00BF63]"></div>
+                    <section className="h-[400px] overflow-hidden">
+                        <img src="https://i.ibb.co/DgDGtSLq/Screenshot-2026-04-10-093549.png" className="w-full h-full object-cover" />
                     </section>
 
-                    {/* Vision Section */}
-                    <section className="py-28">
+                    {/* Vision */}
+                    <section className="py-24">
                         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                             <div>
                                 <h5 className="text-[#00BF63] font-bold uppercase text-[10px] tracking-[0.4em] mb-5">OUR VISION</h5>
-                                <h2 className="text-[#1A1A1A] font-heading text-4xl md:text-5xl font-extrabold uppercase mb-8 leading-tight tracking-tight">
-                                    Redefining <br/> the Real <br/> Estate <br/> Landscape
-                                </h2>
-                                <p className="text-slate-500 mb-10 leading-relaxed text-[15px] font-medium max-w-md">
-                                    At Ycon Infra, we aim to redefine the real estate landscape by creating sustainable and innovative living spaces.
-                                </p>
-                                <a href="projects.html" className="btn-ycon">VIEW OUR PROJECTS</a>
+                                <h2 className="text-[#1A1A1A] font-heading text-4xl font-extrabold uppercase mb-8 leading-tight">Redefining the <br/>Real Estate Landscape</h2>
+                                <p className="text-slate-500 mb-10 leading-relaxed text-[15px]">At Ycon Infra, we aim to redefine the real estate landscape by creating sustainable and innovative living spaces for every family.</p>
+                                <a href="projects.html" className="btn-ycon">EXPLORE PROJECTS</a>
                             </div>
                             <div className="flex justify-center md:justify-end">
-                                <img 
-                                    src="https://i.ibb.co/LdcsyJGp/Screenshot-2026-04-10-095338.png" 
-                                    className="w-[320px] h-[320px] object-cover rounded shadow-2xl" 
-                                    alt="Vision Building" 
-                                />
+                                <img src="https://i.ibb.co/LdcsyJGp/Screenshot-2026-04-10-095338.png" className="w-[320px] h-[320px] object-cover rounded shadow-2xl" />
                             </div>
                         </div>
                     </section>
 
-                    {/* Stats Section */}
+                    {/* Stats */}
                     <section className="bg-slate-50 py-14 border-y border-slate-100">
                         <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center items-center gap-8 md:gap-0 text-center">
                             {stats.map((stat, i) => (
@@ -162,6 +189,54 @@
                             ))}
                         </div>
                     </section>
+
+                    {/* ENQUIRY SECTION */}
+                    <section id="enquiry" className="py-24 bg-white">
+                        <div className="max-w-6xl mx-auto px-6">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                                {/* Left Side: Form */}
+                                <div>
+                                    <ContactForm />
+                                </div>
+
+                                {/* Right Side: Simplified Info */}
+                                <div className="flex flex-col justify-center">
+                                    <h5 className="text-[#00BF63] font-bold uppercase text-[10px] tracking-[0.4em] mb-5">GET IN TOUCH</h5>
+                                    <h2 className="text-[#1A1A1A] font-heading text-4xl font-extrabold uppercase mb-8 leading-tight">Ready to find <br/>your dream home?</h2>
+                                    
+                                    <div className="space-y-10">
+                                        <div className="flex items-start gap-5">
+                                            <div className="bg-slate-50 p-4 rounded-full text-[#00BF63] shadow-sm">
+                                                <i className="fas fa-location-dot text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-xs uppercase tracking-widest mb-2 text-slate-400">Our Location</h4>
+                                                <p className="text-[#1A1A1A] font-semibold text-lg leading-snug">Pataudi Road, Sector 1, <br/>Gurugram, Haryana - 122503</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-5">
+                                            <div className="bg-slate-50 p-4 rounded-full text-[#00BF63] shadow-sm">
+                                                <i className="fas fa-phone-volume text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-xs uppercase tracking-widest mb-2 text-slate-400">Direct Call</h4>
+                                                <p className="text-[#1A1A1A] font-semibold text-lg leading-snug">+91 75680 05371</p>
+                                                <p className="text-slate-500 text-sm mt-1">Mon - Sat: 9:00 AM - 7:00 PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="py-12 bg-slate-900 text-center">
+                        <div className="text-white text-3xl font-heading font-extrabold tracking-tighter">YCON</div>
+                        <div className="text-[9px] font-bold tracking-[0.6em] text-slate-500 mb-6 uppercase">Infra Group</div>
+                        <p className="text-slate-500 text-xs">© 2026 Ycon Infra. All Rights Reserved.</p>
+                    </footer>
                 </div>
             );
         };
