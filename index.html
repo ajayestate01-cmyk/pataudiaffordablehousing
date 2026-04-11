@@ -125,11 +125,18 @@
             ];
             
             const whatsappNumber = "9958108800";
-            
+            const message = "I want to know more about this project";
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
             return (
                 <div className="relative">
                     {/* Floating WhatsApp */}
-                    <a href={`https://wa.me/${whatsappNumber}`} className="whatsapp-float" target="_blank" rel="noopener noreferrer">
+                    <a 
+                        href={whatsappLink} 
+                        className="whatsapp-float" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
                         <i className="fab fa-whatsapp"></i>
                     </a>
 
@@ -157,7 +164,7 @@
                     </header>
 
                     <section className="h-[400px] overflow-hidden">
-                        <img src="https://i.ibb.co/DgDGtSLq/Screenshot-2026-04-10-093549.png" className="w-full h-full object-cover" />
+                        <img src="https://i.ibb.co/DgDGtSLq/Screenshot-2026-04-10-093549.png" className="w-full h-full object-cover" alt="Hero Image" />
                     </section>
 
                     {/* Vision */}
@@ -170,7 +177,7 @@
                                 <a href="projects.html" className="btn-ycon">EXPLORE PROJECTS</a>
                             </div>
                             <div className="flex justify-center md:justify-end">
-                                <img src="https://i.ibb.co/LdcsyJGp/Screenshot-2026-04-10-095338.png" className="w-[320px] h-[320px] object-cover rounded shadow-2xl" />
+                                <img src="https://i.ibb.co/LdcsyJGp/Screenshot-2026-04-10-095338.png" className="w-[320px] h-[320px] object-cover rounded shadow-2xl" alt="Vision" />
                             </div>
                         </div>
                     </section>
@@ -194,12 +201,9 @@
                     <section id="enquiry" className="py-24 bg-white">
                         <div className="max-w-6xl mx-auto px-6">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                                {/* Left Side: Form */}
                                 <div>
                                     <ContactForm />
                                 </div>
-
-                                {/* Right Side: Simplified Info */}
                                 <div className="flex flex-col justify-center">
                                     <h5 className="text-[#00BF63] font-bold uppercase text-[10px] tracking-[0.4em] mb-5">GET IN TOUCH</h5>
                                     <h2 className="text-[#1A1A1A] font-heading text-4xl font-extrabold uppercase mb-8 leading-tight">Ready to find <br/>your dream home?</h2>
